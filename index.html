@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Nexo Assist — Central de atendimento</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main id="login-screen" class="login-shell">
+    <section class="login-card">
+      <a class="brand" href="/" aria-label="Nexo Assist">
+        <span class="brand-mark">n</span><span>Nexo<span class="brand-light">Assist</span></span>
+      </a>
+      <div class="login-copy">
+        <span class="eyebrow">CENTRAL DE SERVIÇOS</span>
+        <h1>Olá, que bom ter você por aqui.</h1>
+        <p>Entre para conversar com o Nexo Assist e acompanhar seus chamados.</p>
+      </div>
+      <form id="login-form">
+        <label for="username">Seu nome ou usuário</label>
+        <input id="username" name="usuario" autocomplete="username" placeholder="Ex.: ana" required>
+        <label for="password">Senha</label>
+        <input id="password" name="senha" type="password" autocomplete="current-password" placeholder="Digite qualquer senha" required>
+        <button class="primary-button login-button" type="submit">Entrar na central <span aria-hidden="true">→</span></button>
+        <p class="demo-hint">Ambiente de demonstração — qualquer senha é aceita.</p>
+        <p id="login-error" class="error-message" role="alert"></p>
+      </form>
+      <div class="login-foot"><span class="status-dot"></span> Seus chamados em um só lugar</div>
+    </section>
+    <aside class="login-art" aria-label="Atendimento Nexo">
+      <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+      <div class="art-bubble bubble-main"><span class="bubble-spark">✳</span><span class="bubble-line"></span><span class="bubble-line short"></span></div>
+      <div class="art-bubble bubble-small"><span class="status-dot"></span> Sempre por perto</div>
+      <div class="art-caption"><span class="eyebrow">TECNOLOGIA COM CUIDADO</span><h2>Resolver juntos<br>faz toda diferença.</h2><p>Seu espaço para pedir ajuda, encontrar respostas e seguir em frente.</p></div>
+      <span class="art-decoration decor-a">✳</span><span class="art-decoration decor-b">✳</span>
+    </aside>
+  </main>
+
+  <main id="app-screen" class="app-shell hidden">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Nexo Assist">
+        <span class="brand-mark">n</span><span>Nexo<span class="brand-light">Assist</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="topbar-label">CENTRAL DE SERVIÇOS</span>
+        <span class="topbar-divider"></span>
+        <span id="user-avatar" class="avatar">A</span>
+        <span id="user-name" class="user-name"></span>
+        <button id="logout-button" class="icon-button" title="Sair" aria-label="Sair">↗</button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-heading"><div><span class="eyebrow">SEU ESPAÇO</span><h2>Atendimento</h2></div><span class="sidebar-icon">⌘</span></div>
+        <button id="new-chat-button" class="new-chat-button"><span>＋</span> Nova conversa</button>
+        <section class="ticket-section">
+          <div class="section-title"><span>Seus chamados</span><span id="ticket-count" class="count-pill">0</span></div>
+          <div id="ticket-list" class="ticket-list"></div>
+          <p id="empty-tickets" class="empty-tickets">Nenhum chamado por enquanto.</p>
+        </section>
+        <div class="sidebar-help"><span class="help-icon">?</span><div><strong>Precisa de ajuda?</strong><span>Descreva o que está acontecendo no chat.</span></div></div>
+        <div class="sidebar-footer"><span class="status-dot"></span> Atendimento online <span class="footer-version">PROTÓTIPO</span></div>
+      </aside>
+
+      <section class="chat-panel">
+        <div class="chat-heading">
+          <div class="assistant-identity"><div class="assistant-avatar"><span>n</span><i></i></div><div><h1>Nexo Assist</h1><p><span class="status-dot"></span> Assistente virtual · online</p></div></div>
+          <div class="message-meter"><span id="message-count">30</span><span>mensagens disponíveis</span></div>
+        </div>
+        <div id="handoff-banner" class="handoff-banner hidden"><span>↗</span><div><strong>Conversa transferida</strong><small>Um analista vai continuar este atendimento. O Nexo Assist está pausado.</small></div></div>
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="welcome-block">
+            <div class="welcome-icon">✳</div>
+            <span class="eyebrow">SEU ASSISTENTE NEXO</span>
+            <h2>Como posso ajudar<br><em>hoje?</em></h2>
+            <p>Posso tirar dúvidas, consultar seus chamados ou registrar um novo problema.</p>
+            <div class="suggestion-row">
+              <button class="suggestion-chip" data-prompt="Quais são meus chamados?">Ver meus chamados <span>↗</span></button>
+              <button class="suggestion-chip" data-prompt="Esqueci minha senha">Redefinir senha <span>↗</span></button>
+              <button class="suggestion-chip" data-prompt="Quero falar com um analista">Falar com uma pessoa <span>↗</span></button>
+            </div>
+          </div>
+        </div>
+        <div id="typing" class="typing hidden"><span></span><span></span><span></span><small>Nexo está pensando</small></div>
+        <form id="composer" class="composer">
+          <textarea id="message-input" rows="1" maxlength="1200" placeholder="Escreva sua mensagem..." aria-label="Sua mensagem"></textarea>
+          <div class="composer-bottom"><span>Enter para enviar · Shift + Enter para nova linha</span><button id="send-button" class="send-button" aria-label="Enviar mensagem" type="submit">↑</button></div>
+        </form>
+        <p class="chat-disclaimer">O Nexo Assist pode cometer erros. Não compartilhe senhas ou informações sensíveis.</p>
+      </section>
+    </div>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+__pycache__/
+nexo.sqlite3
+nexo.sqlite3-shm
+nexo.sqlite3-wal
